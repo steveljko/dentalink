@@ -16,6 +16,9 @@
 </head>
 
 <body class="bg-gray-50">
+    <x-modal.container />
+    <x-modal.backdrop />
+
     <div class="flex h-screen">
         <x-sidebar />
 
