@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Traits\Macroable;
 
 final class Htmx
@@ -13,6 +14,14 @@ final class Htmx
      * The headers applied to response.
      */
     private array $headers = [];
+
+    /**
+     * Check if the request is an HTMX request.
+     */
+    public function isRequest(): bool
+    {
+        return request()->hasHeader('HX-Request');
+    }
 
     /**
      * Set the HX-Retarget header.
