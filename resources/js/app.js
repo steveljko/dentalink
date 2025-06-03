@@ -61,3 +61,22 @@ htmx.on('htmx:beforeSwap', (e) => {
         e.detail.shouldSwap = false;
     }
 });
+
+// handle validation errors
+document.addEventListener('htmx:responseError', function (event) {
+    const errors = JSON.parse(event.detail.xhr.response).errors;
+
+    for (const [field, messages] of Object.entries(errors)) {
+        const container = document.querySelector(`#${field}-error`);
+        container.classList.remove('hidden');
+        container.innerHTML = messages[0];
+    }
+});
+
+// user menu
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('userMenuButton');
+    const dropdown = document.getElementById('userDropdown');
+
+    userMenuButton.addEventListener('click', () => dropdown.classList.toggle('hidden'));
+});
