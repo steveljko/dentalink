@@ -94,11 +94,11 @@ final class Htmx
     }
 
     /**
-     * Set the HX-Refresh header.
+     * Send page refresh.
      */
-    public function refresh(bool $refresh = true): self
+    public function refresh(): self
     {
-        $this->headers['HX-Refresh'] = $refresh ? 'true' : 'false';
+        $this->headers['HX-Refresh'] = 'true';
 
         return $this;
     }
