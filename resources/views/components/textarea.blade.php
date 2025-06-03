@@ -3,16 +3,16 @@
     'label' => '',
     'tooltip' => '',
     'required' => false,
-    'placeholder' => '',
-    'options' => [],
 ])
+
 @php
     $id = $attributes->get('id', $name);
-    $propValue = old($name, $attributes->get('value', ''));
+    $value = old($name, $attributes->get('value', ''));
     $hasError = $errors->has($name);
 
     $baseClasses =
         'w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200';
+
     if ($hasError) {
         $baseClasses .= ' border-red-300 focus:ring-red-500 focus:border-red-500';
     } else {
@@ -20,8 +20,10 @@
     }
 
     $class = $baseClasses . ' ' . $attributes->get('class', '');
-    $selectAttributes = $attributes->except(['class', 'value', 'id', 'options']);
+
+    $textareaAttributes = $attributes->except(['class', 'value', 'id']);
 @endphp
+
 <div class="mb-4">
     @if ($label)
         <label for="{{ $id }}" class="block text-sm font-medium text-gray-700 mb-1">
@@ -41,17 +43,8 @@
             @endif
         </label>
     @endif
-    <select id="{{ $id }}" name="{{ $name }}" class="{{ $class }}"
-        @if ($required) required @endif {{ $selectAttributes }}>
-        @if (is_array($options) && count($options) > 0)
-            @foreach ($options as $value => $text)
-                <option value="{{ $value }}" {{ $value == $propValue ? 'selected' : '' }}>
-                    {{ $text }}
-                </option>
-            @endforeach
-        @else
-            {{ $slot }}
-        @endif
-    </select>
+
+    <textarea id="{{ $id }}" name="{{ $name }}" class="{{ $class }}"
+        @if ($required) required @endif {{ $textareaAttributes }}>{{ $value }}</textarea>
     <div id="{{ $name }}-error" class="mt-1 text-sm text-red-600"></div>
 </div>
