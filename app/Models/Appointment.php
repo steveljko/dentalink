@@ -16,6 +16,7 @@ class Appointment extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'dentist_id',
         'scheduled_start',
         'duration',
         'status',
