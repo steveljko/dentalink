@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignId('patient_id');
             $table->foreignId('dentist_id')->constrained('users');
             $table->dateTime('scheduled_start');
+            $table->dateTime('appointment_end');
             $table->integer('duration')->default(60);
             $table->enum('status', ['scheduled', 'confirmed', 'completed', 'cancelled', 'no_show'])->default('scheduled');
             $table->text('notes')->nullable();
-            $table->decimal('estimated_cost', 8, 2)->nullable();
-            $table->decimal('actual_cost', 8, 2)->nullable();
             $table->enum('payment_status', ['pending', 'paid', 'partially_paid'])->default('pending');
+
             $table->timestamps();
         });
     }

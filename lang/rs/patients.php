@@ -17,7 +17,7 @@ return [
     // create
     'save' => 'Sačuvaj pacijenta',
     'emergency_contact_name' => 'Ime kontakta u hitnim slučajevima',
-    'emergency_phone_number' => 'Telefon kontakta u hitnim slučajevima',
+    'emergency_contact_phone' => 'Telefon kontakta u hitnim slučajevima',
 
     // show
     'edit' => 'Izmeni Pacijenta',

@@ -19,6 +19,7 @@ final class DashboardController
         $appointments = Appointment::with('patient')
             ->whereDate('scheduled_start', Carbon::today())
             ->orderBy('scheduled_start', 'desc')
+            ->whereStatus('scheduled')
             ->limit(5)
             ->get();
 

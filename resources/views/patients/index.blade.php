@@ -19,7 +19,6 @@
         </form>
     </div>
 
-    <!-- Table -->
     @fragment('table')
         <div id="table" hx-get="{{ route('patient.index') }}" hx-trigger="loadPatients from:body" class="overflow-x-auto">
             <table class="w-full">
@@ -79,17 +78,10 @@
                     @endforelse
                 </tbody>
             </table>
+
             @if ($patients->hasPages())
                 <div class="px-6 py-4 border-t border-gray-200">
-                    <div class="flex items-center justify-between">
-                        <div class="text-sm text-gray-700">
-                            Showing {{ $patients->firstItem() ?? 0 }} to {{ $patients->lastItem() ?? 0 }}
-                            of {{ $patients->total() }} results
-                        </div>
-                        <div>
-                            {{ $patients->links() }}
-                        </div>
-                    </div>
+                    {{ $patients->links() }}
                 </div>
             @endif
         </div>

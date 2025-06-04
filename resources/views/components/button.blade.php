@@ -2,8 +2,8 @@
     'type' => 'button',
     'size' => 'md',
     'variant' => 'primary',
+    'icon' => '',
     'class' => '',
-    'text',
 ])
 
 @php
@@ -27,7 +27,7 @@
         $variantClass .
         ' ' .
         $class .
-        ' rounded-md cursor-pointer inline-block text-center no-underline transition-colors';
+        ' rounded-md cursor-pointer inline-flex items-center text-center no-underline transition-colors';
 @endphp
 
 @if ($attributes->has('href'))
@@ -36,6 +36,9 @@
     </a>
 @else
     <button type="{{ $type }}" class="{{ $baseClasses }}" {{ $attributes }}>
+        @if ($icon)
+            <i class="fas fa-{{ $icon }} text-white mr-1"></i>
+        @endif
         {{ $slot }}
     </button>
 @endif
