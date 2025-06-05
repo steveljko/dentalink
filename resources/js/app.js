@@ -123,12 +123,13 @@ window.removeImage = removeImage;
 
 // user menu
 document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('userMenuButton');
-    const dropdown = document.getElementById('userDropdown');
+    const userMenuButton = document.getElementById('userMenuButton');
+    if (userMenuButton) {
+        const dropdown = document.getElementById('userDropdown');
 
-    userMenuButton.addEventListener('click', () => dropdown.classList.toggle('hidden'));
+        userMenuButton.addEventListener('click', () => dropdown.classList.toggle('hidden'));
+    }
 
     Fancybox.bind("[data-fancybox='gallery']", {});
-
 });
 

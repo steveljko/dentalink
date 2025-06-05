@@ -12,7 +12,7 @@
                 <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
 
-            <x-dashboard.user-menu username="Doctor" />
+            <x-dashboard.user-menu :username="auth()->user()->name" />
         </div>
     </div>
 </header>

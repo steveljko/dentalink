@@ -2,11 +2,17 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PatientAttachmentController;
 use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+Route::get('/login', LoginController::class)->name('login');
+Route::post('/login', [LoginController::class, 'handle'])->name('login.handle');
+Route::delete('/logout', LogoutController::class)->name('logout');
 
 Route::resource('patient', PatientController::class);
 

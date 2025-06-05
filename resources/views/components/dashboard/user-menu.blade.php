@@ -17,8 +17,8 @@
                 Settings
             </a>
             <hr class="my-2 border-gray-200">
-            <a href="#"
-                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors">
+            <a hx-delete="{{ route('logout') }}"
+                class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors cursor-pointer">
                 <i class="fas fa-sign-out-alt mr-3"></i>
                 Logout
             </a>
