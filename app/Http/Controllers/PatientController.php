@@ -40,6 +40,10 @@ final class PatientController
     {
         Patient::create($request->all());
 
+        if (htmx()->currentUrl() == route('dashboard')) {
+            return htmx()->refresh()->response(null);
+        }
+
         return htmx()->trigger('loadPatients')->response(null);
     }
 

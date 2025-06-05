@@ -3,8 +3,7 @@
 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
     <div class="flex justify-between mb-2">
         <h3 class="font-medium text-gray-900">
-            {{ \Carbon\Carbon::parse($appointment->scheduled_start)->locale('sr')->format('j. M \u H:i') }}
-
+            {{ \Carbon\Carbon::parse($appointment->scheduled_start)->locale('sr')->format('j. M H:i') }}
         </h3>
         <x-appointments.status :status="$appointment->status" />
     </div>
@@ -36,6 +35,5 @@
         </div>
     @endif
 
-    <a href="#"
-        class="mt-2 block text-green-600 hover:text-green-800 text-sm cursor-pointer font-medium">Pogledaj</a>
+    <x-button href="{{ route('appointment.show', $appointment) }}" size="sm" class="mt-2">Pogledaj</x-button>
 </div>

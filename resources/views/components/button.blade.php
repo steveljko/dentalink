@@ -32,6 +32,9 @@
 
 @if ($attributes->has('href'))
     <a href="{{ $attributes->get('href') }}" class="{{ $baseClasses }}" {{ $attributes }}>
+        @if ($icon)
+            <i class="fas fa-{{ $icon }} text-gray-500 mr-1"></i>
+        @endif
         {{ $slot }}
     </a>
 @else

@@ -19,11 +19,7 @@ class Appointment extends Model
         'dentist_id',
         'scheduled_start',
         'duration',
-        'status',
         'notes',
-        'estimated_cost',
-        'actual_cost',
-        'payment_status',
     ];
 
     /**

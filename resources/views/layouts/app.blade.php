@@ -24,7 +24,7 @@
     <div class="flex h-screen">
         <x-sidebar />
 
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-y-auto">
             @yield('content')
         </div>
     </div>

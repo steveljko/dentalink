@@ -15,6 +15,7 @@
         "vite": "^6.2.4"
     },
     "dependencies": {
+        "@fancyapps/ui": "^5.0.36",
         "htmx.org": "^1.9.12"
     }
 }

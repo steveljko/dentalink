@@ -11,6 +11,7 @@ return [
 
     'duration' => 'Dužina',
     'payment' => 'Status plaćanja: ',
+    'notes' => 'Opis',
 
     'paid' => 'Plaćeno',
     'pending' => 'Na čekanju',

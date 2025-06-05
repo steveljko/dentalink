@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAppointmentRequest;
+use App\Models\Appointment;
 use App\Models\Patient;
 use Illuminate\View\View;
 
@@ -15,9 +16,11 @@ final class AppointmentController
 
     public function store(CreateAppointmentRequest $request, Patient $patient)
     {
-        $patient->appointments()->create(array_merge($request->all(), [
-            'dentist_id' => 1,
-            'patient_id' => $patient->id,
-        ]));
+        $patient->appointments()->create(array_merge($request->all(), ['dentist_id' => 1]));
+    }
+
+    public function show(Appointment $appointment): View
+    {
+        return view('appointments.show', compact('appointment'));
     }
 }

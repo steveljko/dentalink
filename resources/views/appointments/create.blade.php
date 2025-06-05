@@ -11,7 +11,7 @@
                     '90' => '1.5 sat',
                     '120' => '2 sata',
                 ]" :required="true" />
-                <x-textarea name="notes" label="Notes" />
+                <x-textarea name="notes" :label="__('appointments.notes')" />
 
             </div>
         @endfragment

@@ -23,6 +23,14 @@ final class Htmx
         return request()->hasHeader('HX-Request');
     }
 
+    /*
+     * Get the current URL from the HTMX request header.
+     */
+    public function currentUrl(): string
+    {
+        return request()->header('HX-Current-Url');
+    }
+
     /**
      * Set the HX-Retarget header.
      */

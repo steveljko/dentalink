@@ -12,7 +12,7 @@
                 <span class="text-gray-600 text-sm">{{ __('dashboard.patients_added_this_month') }}</span>
             </x-card>
 
-            <x-card :title="__('dashboard.today_appoitments')" value="18" color="green" icon="calendar-check">
+            <x-card :title="__('dashboard.today_appoitments')" :value="$appointments->count()" color="green" icon="calendar-check">
                 <span class="text-blue-500 text-sm font-medium">{{ __('dashboard.more', ['number' => 3]) }}</span>
                 <span class="text-gray-600 text-sm">{{ __('dashboard.than_yesterday') }}</span>
             </x-card>
