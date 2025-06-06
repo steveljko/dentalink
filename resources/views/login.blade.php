@@ -19,12 +19,21 @@
     <x-modal.container />
     <x-modal.backdrop />
 
-    <div class="w-1/2 p-4 mx-auto rounded-md bg-white shadow">
-        <form hx-post="{{ route('login.handle') }}">
-            <x-input name="username" label="Korisničko ime" />
-            <x-input type="password" name="password" label="Šifra" />
-            <x-button type="submit">Uloguj se</x-button>
-        </form>
+
+    <div class="flex items-center justify-center h-screen">
+        <div class="w-1/2 lg:w-1/3 p-4 rounded-lg border border-gray-100 bg-white shadow">
+            <div class="flex justify-center items-center my-3">
+                <i class="fas fa-tooth text-2xl mr-3 text-blue-500"></i>
+                <h1 class="text-xl font-bold">DentaLink</h1>
+            </div>
+            <form hx-post="{{ route('login.handle') }}">
+                <x-input name="username" label="Korisničko ime" />
+                <x-input type="password" name="password" label="Šifra" />
+                <div class="flex justify-end">
+                    <x-button type="submit">Uloguj se</x-button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

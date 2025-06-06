@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between">
         <div>
             <h2 class="text-2xl font-semibold text-gray-800">{{ __('dashboard.title') }}</h2>
-            <p class="text-gray-600">{{ __('dashboard.welcome_back', ['name' => 'asd']) }}</p>
+            <p class="text-gray-600">{{ __('dashboard.welcome_back', ['name' => auth()->user()->name]) }}</p>
         </div>
 
         <div class="flex items-center space-x-10">
@@ -12,7 +12,7 @@
                 <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
             </div>
 
-            <x-dashboard.user-menu :username="auth()->user()->name" />
+            <x-dashboard.user-menu :name="auth()->user()->name" />
         </div>
     </div>
 </header>
