@@ -21,7 +21,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <x-dashboard.today-appoitments :appointments="$appointments" />
             <x-dashboard.quick-actions />
-            <x-dashboard.calendar />
+            <x-dashboard.calendar :appointments="$appointments" />
         </div>
     </main>
 @endsection

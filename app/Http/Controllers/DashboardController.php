@@ -20,7 +20,6 @@ final class DashboardController
             ->whereDate('scheduled_start', Carbon::today())
             ->orderBy('scheduled_start', 'desc')
             ->whereStatus('scheduled')
-            ->limit(5)
             ->get();
 
         return view('dashboard', compact('patients', 'createdThisMonth', 'appointments'));

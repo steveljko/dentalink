@@ -6,6 +6,12 @@ window.htmx = htmx;
 window.modal = modal;
 window.htmx.config.defaultFocusScroll = 'true';
 
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
+
 
 htmx.on('htmx:afterSwap', (e) => {
   if (e.detail.target.id == 'dialog') {
@@ -103,5 +109,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     Fancybox.bind("[data-fancybox='gallery']", {});
+
+    const calendarEl = document.getElementById('calendar');
+    if (calendarEl) {
+        const appointments = JSON.parse(calendarEl.getAttribute('data-appointments')) || {};
+
+        const appointmentsAsEvents = appointments.map(appointment => {
+            const startTime = new Date(appointment.scheduled_start);
+            const e = startTime.getTime() + (appointment.duration * 60 * 1000);
+            const endTime = new Date(e);
+
+            return {
+                id: appointment.id.toString(),
+                title: `${appointment.patient.first_name} ${appointment.patient.last_name}`,
+                start: startTime.toISOString(),
+                end: endTime.toISOString(),
+            };
+        });
+
+        const calendar = new Calendar(calendarEl, {
+            plugins: [ timeGridPlugin ],
+            headerToolbar: { left: '', center: '', right: '' },
+            initialView: 'timeGrid',
+            timeZone: 'Europe/Belgrade',
+            allDaySlot: false,
+            nowIndicator: true,
+            events: appointmentsAsEvents,
+        });
+
+        calendar.render();
+    }
 });
 
