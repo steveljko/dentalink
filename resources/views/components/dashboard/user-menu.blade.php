@@ -2,8 +2,6 @@
 
 <div class="relative">
     <button id="userMenuButton" class="flex cursor-pointer items-center space-x-3 rounded-lg  ">
-        <img src="https://ui-avatars.com/api/?name=Ema+R&background=3b82f6&color=ffffff" alt="User"
-            class="w-10 h-10 rounded-full">
         <p class="text-sm font-medium text-gray-800">{{ $name }}</p>
         <i class="fas fa-chevron-down text-gray-400 text-sm"></i>
     </button>

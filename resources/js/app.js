@@ -130,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const calendar = new Calendar(calendarEl, {
             plugins: [ timeGridPlugin ],
             headerToolbar: { left: '', center: '', right: '' },
+            views: {
+                timeGrid: {
+                    slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }
+                }
+            },
             initialView: 'timeGrid',
             timeZone: 'Europe/Belgrade',
             allDaySlot: false,
