@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return {
                 id: appointment.id.toString(),
-                title: `${appointment.patient.first_name} ${appointment.patient.last_name}`,
+                title: `${appointment.patient.id} | ${appointment.patient.first_name} ${appointment.patient.last_name}`,
                 start: startTime.toISOString(),
                 end: endTime.toISOString(),
             };

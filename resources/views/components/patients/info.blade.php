@@ -8,6 +8,10 @@
         <div class="p-6 flex-1 overflow-y-auto">
             <div class="space-y-4">
                 <div>
+                    <label class="block text-sm font-medium text-gray-600">Broj</label>
+                    <p class="mt-1 text-sm text-gray-900">{{ $patient->id }}</p>
+                </div>
+                <div>
                     <label class="block text-sm font-medium text-gray-600">{{ __('patients.fullname') }}</label>
                     <p class="mt-1 text-sm text-gray-900">{{ $patient->first_name }}
                         {{ $patient->last_name }}
