@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Log;
 use App\Models\Patient;
 use Carbon\Carbon;
 use Illuminate\View\View;
@@ -22,6 +23,8 @@ final class DashboardController
             ->whereStatus('scheduled')
             ->get();
 
-        return view('dashboard', compact('patients', 'createdThisMonth', 'appointments'));
+        $notifications = Log::limit(5)->orderBy('created_at', 'desc')->get();
+
+        return view('dashboard', compact('patients', 'createdThisMonth', 'appointments', 'notifications'));
     }
 }
