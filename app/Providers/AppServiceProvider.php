@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Notifications\Channels\DatabaseLogChannel;
 use Google\Client;
 use Google\Service\Drive;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem;
@@ -29,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
         App::setLocale('rs');
 
         $this->loadGoogleStorageDriver();
+
+        Notification::extend('database_log', function ($app) {
+            return new DatabaseLogChannel;
+        });
     }
 
     private function loadGoogleStorageDriver(string $driverName = 'google')
