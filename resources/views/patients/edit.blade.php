@@ -1,6 +1,6 @@
 <form hx-put="{{ route('patient.update', $patient) }}" id="modal-content">
     <x-modal.header>Izmeni Pacijenta</x-modal.header>
-    <x-modal.body>
+    <x-modal.body class="h-[37.5rem] overflow-y-auto">
         @fragment('form')
             <div class="space-y-4">
                 <x-input name="first_name" :label="__('patients.first_name')" :required="true" :value="$patient->first_name" />
@@ -8,6 +8,7 @@
                 <x-input name="date_of_birth" :label="__('patients.date_of_birth')" type="date" :value="$patient->date_of_birth" />
                 <x-input name="phone" :label="__('patients.phone')" :value="$patient->phone" />
                 <x-select name="gender" :label="__('patients.gender')" :options="['male' => 'Muško', 'female' => 'Žensko']" :required="true" :value="$patient->gender" />
+                <x-textarea name="medical_history" label="Istorija" :value="$patient->medical_history" />
 
                 <div class="w-full bg-gray-200 h-[1px] my-4"></div>
 

@@ -23,6 +23,7 @@ class Patient extends Model
         'phone',
         'date_of_birth',
         'gender',
+        'medical_history',
         'emergency_contact_name',
         'emergency_contact_phone',
         'notes',

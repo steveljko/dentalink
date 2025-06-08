@@ -28,6 +28,7 @@ class CreatePatientRequest extends FormRequest
             'phone' => ['nullable', 'string', 'max:20', 'regex:/^[\+]?[0-9\s\-\(\)]+$/'],
             'date_of_birth' => ['nullable', 'date', 'before:today'],
             'gender' => ['required', 'in:male,female'],
+            'medical_history' => ['nullable', 'max:512'],
             'emergency_contact_name' => ['nullable', 'string', 'max:255'],
             'emergency_contact_phone' => ['nullable', 'string', 'max:20', 'regex:/^[\+]?[0-9\s\-\(\)]+$/'],
             'notes' => ['nullable', 'string', 'max:65535'],

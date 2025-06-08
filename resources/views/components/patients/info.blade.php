@@ -54,6 +54,14 @@
                         </p>
                     </div>
                 @endif
+                @if ($patient->medical_history)
+                    <div>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Istorija</label>
+                        <p
+                            class="border border-blue-500 bg-blue-50 text-blue-700 text-sm font-medium text-gray-700 p-3 rounded">
+                            {{ $patient->medical_history }}</p>
+                    </div>
+                @endif
                 @if ($patient->emergency_contact_name || $patient->emergency_contact_phone)
                     <div class="pt-4 border-t border-gray-200">
                         <h3 class="text-sm font-medium text-gray-900 mb-2">
@@ -71,7 +79,7 @@
                 @endif
                 @if ($patient->notes)
                     <div class="pt-4 border-t border-gray-200">
-                        <label class="block text-sm font-medium text-gray-600 mb-2">Notes</label>
+                        <label class="block text-sm font-medium text-gray-600 mb-2">Beleške</label>
                         <p class="text-sm text-gray-700 bg-gray-50 p-3 rounded">{{ $patient->notes }}</p>
                     </div>
                 @endif
