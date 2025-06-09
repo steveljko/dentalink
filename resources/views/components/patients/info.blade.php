@@ -50,7 +50,7 @@
                         <label class="block text-sm font-medium text-gray-600">{{ __('patients.phone') }}</label>
                         <p class="mt-1 text-sm text-gray-900">
                             <a href="tel:{{ $patient->phone }}"
-                                class="text-blue-600 hover:text-blue-800">{{ $patient->phone }}</a>
+                                class="text-blue-600 hover:text-blue-800">{{ phone($patient->phone, 'RS')->formatInternational() }}</a>
                         </p>
                     </div>
                 @endif
