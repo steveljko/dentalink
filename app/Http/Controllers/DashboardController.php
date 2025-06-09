@@ -23,8 +23,8 @@ final class DashboardController
             ->whereStatus('scheduled')
             ->get();
 
-        $notifications = Log::limit(5)->orderBy('created_at', 'desc')->get();
+        $logs = Log::limit(5)->orderBy('created_at', 'desc')->get();
 
-        return view('dashboard', compact('patients', 'createdThisMonth', 'appointments', 'notifications'));
+        return view('dashboard', compact('patients', 'createdThisMonth', 'appointments', 'logs'));
     }
 }

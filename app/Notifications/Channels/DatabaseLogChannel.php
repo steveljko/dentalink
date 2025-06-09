@@ -2,6 +2,8 @@
 
 namespace App\Notifications\Channels;
 
+use App\Enums\LogChannel;
+use App\Enums\LogLevel;
 use App\Models\Log;
 use Illuminate\Notifications\Notification;
 use Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification;
@@ -15,72 +17,42 @@ final class DatabaseLogChannel
 {
     public function send($notifiable, Notification $notification)
     {
-        $logData = $this->getLogData($notification);
+        $data = $this->getData($notification);
 
         Log::create([
-            'level' => $logData['level'],
-            'channel' => 'backup',
-            'message' => $logData['message'],
+            'level' => $data['level'],
+            'channel' => LogChannel::BACKUP,
+            'translation_key' => $data['translation_key'],
         ]);
     }
 
-    protected function getLogData(Notification $notification): array
+    protected function getData(Notification $notification): array
     {
         return match (get_class($notification)) {
-            BackupWasSuccessfulNotification::class => $this->handleBackupSuccess($notification),
-            BackupHasFailedNotification::class => $this->handleBackupFailure($notification),
-            HealthyBackupWasFoundNotification::class => $this->handleHealthyBackup($notification),
-            UnhealthyBackupWasFoundNotification::class => $this->handleUnhealthyBackup($notification),
-            CleanupWasSuccessfulNotification::class => $this->handleCleanupSuccess($notification),
-            CleanupHasFailedNotification::class => $this->handleCleanupFailure($notification),
+            BackupWasSuccessfulNotification::class => [
+                'level' => LogLevel::INFO,
+                'translation_key' => 'backup.completed',
+            ],
+            BackupHasFailedNotification::class => [
+                'level' => LogLevel::ERROR,
+                'translation_key' => 'backup.failed',
+            ],
+            HealthyBackupWasFoundNotification::class => [
+                'level' => LogLevel::INFO,
+                'translation_key' => 'backup.check_passed',
+            ],
+            UnhealthyBackupWasFoundNotification::class => [
+                'level' => LogLevel::WARNING,
+                'translation_key' => 'backup.completed',
+            ],
+            CleanupWasSuccessfulNotification::class => [
+                'level' => 'info',
+                'translation_key' => 'backup.cleanup_completed',
+            ],
+            CleanupHasFailedNotification::class => [
+                'level' => 'error',
+                'translation_key' => 'backup.cleanup_failed',
+            ],
         };
-    }
-
-    protected function handleBackupSuccess(Notification $notification): array
-    {
-        return [
-            'level' => 'info',
-            'message' => sprintf('Backup completed successfully.'),
-        ];
-    }
-
-    protected function handleBackupFailure($notification): array
-    {
-        return [
-            'level' => 'error',
-            'message' => sprintf('Backup failed.'),
-        ];
-    }
-
-    protected function handleHealthyBackup($notification): array
-    {
-        return [
-            'level' => 'info',
-            'message' => sprintf('Backup health check passed.'),
-        ];
-    }
-
-    protected function handleUnhealthyBackup($notification): array
-    {
-        return [
-            'level' => 'warning',
-            'message' => sprintf('Backup health check failed.'),
-        ];
-    }
-
-    protected function handleCleanupSuccess($notification): array
-    {
-        return [
-            'level' => 'info',
-            'message' => sprintf('Backup cleanup completed successfully.'),
-        ];
-    }
-
-    protected function handleCleanupFailure($notification): array
-    {
-        return [
-            'level' => 'error',
-            'message' => sprintf('Backup cleanup failed.'),
-        ];
     }
 }

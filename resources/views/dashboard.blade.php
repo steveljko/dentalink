@@ -20,7 +20,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <x-dashboard.calendar :appointments="$appointments" />
-            <x-dashboard.quick-actions :notifications="$notifications" />
+            <x-dashboard.quick-actions :logs="$logs" />
         </div>
     </main>
 @endsection

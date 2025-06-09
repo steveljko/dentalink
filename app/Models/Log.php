@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\LogChannel;
+use App\Enums\LogLevel;
 use Illuminate\Database\Eloquent\Model;
 
 class Log extends Model
@@ -15,6 +17,32 @@ class Log extends Model
         'level',
         'channel',
         'message',
+        'translation_key',
         'additional',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'level' => LogLevel::class,
+            'channel' => LogChannel::class,
+        ];
+    }
+
+    /**
+     * Get hardcoded message or translated message based on the translation key.
+     */
+    public function getMessage(): string
+    {
+        if (! empty($this->translation_key)) {
+            return __($this->translation_key);
+        }
+
+        return $this->message;
+    }
 }
