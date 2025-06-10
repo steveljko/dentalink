@@ -130,16 +130,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const calendar = new Calendar(calendarEl, {
             plugins: [ timeGridPlugin ],
             headerToolbar: { left: '', center: '', right: '' },
-            views: {
-                timeGrid: {
-                    slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false }
-                }
-            },
+            views: { timeGrid: { slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false } } },
             initialView: 'timeGrid',
             timeZone: 'Europe/Belgrade',
             allDaySlot: false,
             nowIndicator: true,
             events: appointmentsAsEvents,
+            eventClick: (info) => {
+                const id = info.event.id;
+                window.location.replace(`/patient/${id}`);
+            }
         });
 
         calendar.render();
