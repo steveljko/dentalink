@@ -17,7 +17,7 @@
             {{ __('patients.title') }}
         </a>
 
-        <a href="#"
+        <a href="{{ route('appointment.index') }}"
             class="flex items-center p-3 rounded-lg hover:bg-blue-800 transition-colors {{ request()->routeIs('appointment.*') ? 'bg-blue-800' : '' }}">
             <i class="fas fa-calendar-alt mr-3"></i>
             {{ __('appointments.title') }}

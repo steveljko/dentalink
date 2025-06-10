@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PatientAttachmentController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ShowAppointmentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', LoginController::class)->name('login');
@@ -23,5 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/patient/{patient}/attachment', [PatientAttachmentController::class, 'create'])->name('patient.upload');
     Route::post('/patient/{patient}/attachment', [PatientAttachmentController::class, 'store'])->name('patient.attach');
 
+    Route::get('/appointments', ShowAppointmentsController::class)->name('appointment.index');
     Route::get('/appointment/{appointment}', [AppointmentController::class, 'show'])->name('appointment.show');
 });

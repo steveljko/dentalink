@@ -48,7 +48,9 @@
             <i class="fas fa-{{ $icon }} {{ $iconColor }} text-xl"></i>
         </div>
     </div>
-    <div class="mt-4">
-        {{ $slot }}
-    </div>
+    @if ($slot->isNotEmpty())
+        <div class="mt-4">
+            {{ $slot }}
+        </div>
+    @endif
 </div>
