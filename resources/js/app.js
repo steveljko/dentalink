@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: `${appointment.patient.id} | ${appointment.patient.first_name} ${appointment.patient.last_name}`,
                 start: startTime.toISOString(),
                 end: endTime.toISOString(),
+                patientId: appointment.patient.id,
             };
         });
 
@@ -137,7 +138,42 @@ document.addEventListener('DOMContentLoaded', () => {
             nowIndicator: true,
             events: appointmentsAsEvents,
             eventClick: (info) => {
-                const id = info.event.id;
+                const id = info.event.extendedProps.patientId;
+                window.location.replace(`/patient/${id}`);
+            }
+        });
+
+        calendar.render();
+    }
+
+    const fullcalendarEl = document.getElementById('full-calendar');
+    if (fullcalendarEl) {
+        const appointments = JSON.parse(fullcalendarEl.getAttribute('data-appointments')) || {};
+
+        const appointmentsAsEvents = appointments.map(appointment => {
+            const startTime = new Date(appointment.scheduled_start);
+            const e = startTime.getTime() + (appointment.duration * 60 * 1000);
+            const endTime = new Date(e);
+
+            return {
+                id: appointment.id.toString(),
+                title: `${appointment.patient.id} | ${appointment.patient.first_name} ${appointment.patient.last_name}`,
+                start: startTime.toISOString(),
+                end: endTime.toISOString(),
+                patientId: appointment.patient.id,
+            };
+        });
+
+        const calendar = new Calendar(fullcalendarEl, {
+            plugins: [ timeGridPlugin ],
+            views: { timeGrid: { slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false } } },
+            initialView: 'timeGrid',
+            timeZone: 'Europe/Belgrade',
+            allDaySlot: false,
+            nowIndicator: true,
+            events: appointmentsAsEvents,
+            eventClick: (info) => {
+                const id = info.event.extendedProps.patientId;
                 window.location.replace(`/patient/${id}`);
             }
         });
