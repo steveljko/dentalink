@@ -4,8 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+* @method static \Illuminate\Database\Eloquent\Builder thisMonth()
+*/
 class Patient extends Model
 {
     /** @use HasFactory<\Database\Factories\PatientFactory> */
@@ -37,5 +41,11 @@ class Patient extends Model
     public function attachments(): HasMany
     {
         return $this->hasMany(PatientAttachments::class);
+    }
+
+    public function scopeThisMonth(Builder $query): Builder
+    {
+        return $query->whereMonth('created_at', date('m'))
+            ->whereYear('created_at', date('Y'));
     }
 }

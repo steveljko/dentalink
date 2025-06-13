@@ -27,7 +27,7 @@
             <h4 class="font-medium text-gray-800 mb-3">{{ __('dashboard.recent_notifications') }}</h4>
             <div class="h-[400px] overflow-y-auto">
                 @if ($logs->isEmpty())
-                    <p class="text-gray-500">Nema notifikacija.</p>
+                    <p class="text-gray-500">Nema obaveštenja.</p>
                 @else
                     @foreach ($logs as $log)
                         <div

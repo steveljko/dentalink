@@ -5,7 +5,11 @@ namespace App\Models;
 use App\Enums\LogChannel;
 use App\Enums\LogLevel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
+/**
+* @method static \Illuminate\Database\Eloquent\Builder latest(int $limti = 5)
+*/
 class Log extends Model
 {
     /**
@@ -44,5 +48,10 @@ class Log extends Model
         }
 
         return $this->message;
+    }
+
+    public function queryLatest(int $limit = 5, Builder $query): Builder
+    {
+        return $this->limit(5)->orderBy('created_at', 'desc');
     }
 }
