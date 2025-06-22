@@ -12,3 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// TODO: Find better way to pass route url
+function handleKeydown(event) {
+    if (event.shiftKey && event.key === 'P') {
+        event.preventDefault();
+
+        htmx.ajax('GET', '/patient/create', { target:'#dialog' })
+    }
+}
+
+document.addEventListener('keydown', handleKeydown);

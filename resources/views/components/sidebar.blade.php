@@ -1,4 +1,4 @@
-<div class="hidden lg:block bg-blue-900 text-white w-80 min-h-screen p-4">
+<div class="hidden lg:block bg-blue-900 text-white w-64 min-h-screen p-4">
     <div class="flex items-center mb-8">
         <i class="fas fa-tooth text-2xl mr-3"></i>
         <h1 class="text-xl font-bold">DentaLink</h1>
