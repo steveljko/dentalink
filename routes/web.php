@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PatientAttachmentController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientSearchController;
 use App\Http\Controllers\ShowAppointmentsController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/appointments', ShowAppointmentsController::class)->name('appointment.index');
     Route::get('/appointment/{appointment}', [AppointmentController::class, 'show'])->name('appointment.show');
+
+    Route::post('/search/patient', PatientSearchController::class)->name('search.patient');
 });

@@ -3,7 +3,10 @@
 @section('title', 'DentaLink | Dashboard')
 
 @section('content')
-    <x-dashboard.header />
+    <x-header>
+        <h2 class="text-2xl font-semibold text-gray-800">{{ __('dashboard.title') }}</h2>
+        <p class="text-gray-600">{{ __('dashboard.welcome_back', ['name' => auth()->user()->name]) }}</p>
+    </x-header>
 
     <main class="flex-1 overflow-y-auto p-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
