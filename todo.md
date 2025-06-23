@@ -4,4 +4,4 @@
     - [x] create search suggestions component
     - [ ] show most recently used first
 
-- [ ] show time from 9am to 11pm in dashboard calendar
+- [x] show time from 9am to 11pm in dashboard calendar

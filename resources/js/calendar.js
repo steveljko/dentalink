@@ -11,6 +11,9 @@ const defaultCalendarOptions = {
     timeZone: 'Europe/Belgrade',
     allDaySlot: false,
     nowIndicator: true,
+    // show only time between 9am and 11pm
+    slotMinTime: '09:00:00',
+    slotMaxTime: '23:00:00',
     eventClick: (info) => {
         const id = info.event.extendedProps.patientId;
         window.location.replace(`/patient/${id}`);
