@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MarkAllNotificationsAsReadController;
 use App\Http\Controllers\PatientAttachmentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientSearchController;
@@ -29,4 +30,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/appointment/{appointment}', [AppointmentController::class, 'show'])->name('appointment.show');
 
     Route::post('/search/patient', PatientSearchController::class)->name('search.patient');
+
+    Route::get('/notifications/read', MarkAllNotificationsAsReadController::class)->name('notifications.read');
 });

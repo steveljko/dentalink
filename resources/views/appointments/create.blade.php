@@ -8,48 +8,31 @@
                         <label for="date" class="block text-sm font-semibold text-gray-700 mb-2">
                             Datum
                         </label>
-                        <input
-                            type="date"
-                            id="date"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                        >
+                        <input type="date" id="date"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200">
                         <div class="flex space-x-1 mt-2">
-                            <button
-                                type="button"
-                                onclick="dateTimePicker.setDate(0)"
-                                class="px-2 py-1 bg-blue-500 hover:bg-blue-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md"
-                            >Danas</button>
-                            <button
-                                type="button"
-                                onclick="dateTimePicker.setDate(1)"
-                                class="px-2 py-1 bg-green-500 hover:bg-green-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md"
-                            >+1 dan</button>
-                            <button
-                                type="button"
-                                onclick="dateTimePicker.setDate(5)"
-                                class="px-2 py-1 bg-red-500 hover:bg-red-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md"
-                            >+5 dan</button>
-                            <button
-                                type="button"
-                                onclick="dateTimePicker.setDate(7)"
-                                class="px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md"
-                            >+1 Nedelja</button>
+                            <button type="button" onclick="dateTimePicker.setDate(0)"
+                                class="px-2 py-1 bg-blue-500 hover:bg-blue-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md">Danas</button>
+                            <button type="button" onclick="dateTimePicker.setDate(1)"
+                                class="px-2 py-1 bg-green-500 hover:bg-green-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md">+1
+                                dan</button>
+                            <button type="button" onclick="dateTimePicker.setDate(5)"
+                                class="px-2 py-1 bg-red-500 hover:bg-red-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md">+5
+                                dan</button>
+                            <button type="button" onclick="dateTimePicker.setDate(7)"
+                                class="px-2 py-1 bg-orange-500 hover:bg-orange-600 text-sm text-white font-medium rounded-full transition-colors duration-200 shadow-sm cursor-pointer hover:shadow-md">+1
+                                Nedelja</button>
                         </div>
                     </div>
                     <div class="flex flex-1 space-x-2">
                         <div class="flex-1">
                             <label for="hour" class="block text-sm font-semibold text-gray-700 mb-2">Sati</label>
-                            <select
-                                id="hour"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                            ></select>
+                            <select id="hour"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></select>
                         </div>
                         <div class="flex-1">
                             <label for="minutes" class="block text-sm font-semibold text-gray-700 mb-2">Minuti</label>
-                            <select
-                                id="minutes"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
-                            >
+                            <select id="minutes" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
                                 <option value="00">00</option>
                                 <option value="15">15</option>
                                 <option value="30" selected>30</option>
@@ -110,7 +93,9 @@
             }
 
             populateHours() {
-                const { hour } = this.elements;
+                const {
+                    hour
+                } = this.elements;
                 if (!hour) return;
 
                 hour.innerHTML = '';
@@ -128,7 +113,12 @@
             }
 
             updateDateTime() {
-                const { date, hour, minutes, field } = this.elements;
+                const {
+                    date,
+                    hour,
+                    minutes,
+                    field
+                } = this.elements;
 
                 if (!date?.value || !hour?.value || !minutes?.value || !field) return;
 
@@ -136,7 +126,11 @@
             }
 
             bindEvents() {
-                const { date, hour, minutes } = this.elements;
+                const {
+                    date,
+                    hour,
+                    minutes
+                } = this.elements;
 
                 date?.addEventListener('change', this.updateDateTime());
                 hour?.addEventListener('change', this.updateDateTime());

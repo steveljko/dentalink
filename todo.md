@@ -9,8 +9,11 @@
 - [x] change date and time picker in appointment creation
 
 - [ ] create notification system
-    - [ ] add notification area in header for showing notifications
+    - [x] rename log model to notification
+    - [x] add 'read_at' field into notification model
+    - [x] add notification area in header for showing notifications
     - [ ] create page for showing all notifications with filters
-    - [ ] remove notifications in quick actions
+    - [x] remove notifications in quick actions
+    - [ ] add real time notification functionality
     - [ ] trigger every appointment notification 15 minutes before time
     - [ ] send 8pm mail with schedule for tomorrow

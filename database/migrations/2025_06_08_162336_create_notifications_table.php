@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->string('level'); // 'debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency'
+            $table->string('level');
             $table->string('channel')->default('default');
             $table->string('message');
-            $table->longText('additional')->nullable();
+            $table->json('additional')->nullable();
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

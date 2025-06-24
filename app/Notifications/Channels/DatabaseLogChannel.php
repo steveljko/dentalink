@@ -2,9 +2,9 @@
 
 namespace App\Notifications\Channels;
 
-use App\Enums\LogChannel;
-use App\Enums\LogLevel;
-use App\Models\Log;
+use App\Enums\NotificationChannel;
+use App\Enums\NotificationLevel;
+use App\Models\Notification as NotificationModel;
 use Illuminate\Notifications\Notification;
 use Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification;
 use Spatie\Backup\Notifications\Notifications\BackupWasSuccessfulNotification;
@@ -19,9 +19,9 @@ final class DatabaseLogChannel
     {
         $data = $this->getData($notification);
 
-        Log::create([
+        NotificationModel::create([
             'level' => $data['level'],
-            'channel' => LogChannel::BACKUP,
+            'channel' => NotificationChannel::BACKUP,
             'translation_key' => $data['translation_key'],
         ]);
     }
@@ -30,27 +30,27 @@ final class DatabaseLogChannel
     {
         return match (get_class($notification)) {
             BackupWasSuccessfulNotification::class => [
-                'level' => LogLevel::INFO,
+                'level' => NotificationLevel::INFO,
                 'translation_key' => 'backup.completed',
             ],
             BackupHasFailedNotification::class => [
-                'level' => LogLevel::ERROR,
+                'level' => NotificationLevel::ERROR,
                 'translation_key' => 'backup.failed',
             ],
             HealthyBackupWasFoundNotification::class => [
-                'level' => LogLevel::INFO,
+                'level' => NotificationLevel::INFO,
                 'translation_key' => 'backup.check_passed',
             ],
             UnhealthyBackupWasFoundNotification::class => [
-                'level' => LogLevel::WARNING,
+                'level' => NotificationLevel::WARNING,
                 'translation_key' => 'backup.completed',
             ],
             CleanupWasSuccessfulNotification::class => [
-                'level' => 'info',
+                'level' => NotificationLevel::INFO,
                 'translation_key' => 'backup.cleanup_completed',
             ],
             CleanupHasFailedNotification::class => [
-                'level' => 'error',
+                'level' => NotificationLevel::ERROR,
                 'translation_key' => 'backup.cleanup_failed',
             ],
         };

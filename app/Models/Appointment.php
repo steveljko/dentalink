@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
-* @method static \Illuminate\Database\Eloquent\Builder today()
-* @method static \Illuminate\Database\Eloquent\Builder whereStatus(string $status)
-*/
+ * @method static \Illuminate\Database\Eloquent\Builder today()
+ * @method static \Illuminate\Database\Eloquent\Builder whereStatus(string $status)
+ */
 class Appointment extends Model
 {
     use HasFactory;

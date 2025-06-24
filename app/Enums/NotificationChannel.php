@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum LogChannel: string
+enum NotificationChannel: string
 {
     case DEFAULT = 'default';
     case BACKUP = 'backup';

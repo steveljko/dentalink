@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Enums\LogChannel;
-use App\Enums\LogLevel;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\NotificationChannel;
+use App\Enums\NotificationLevel;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 
 /**
-* @method static \Illuminate\Database\Eloquent\Builder latest(int $limti = 5)
-*/
-class Log extends Model
+ * @method static \Illuminate\Database\Eloquent\Builder latest(int $limt = 5)
+ */
+class Notification extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -33,8 +33,8 @@ class Log extends Model
     protected function casts(): array
     {
         return [
-            'level' => LogLevel::class,
-            'channel' => LogChannel::class,
+            'level' => NotificationLevel::class,
+            'channel' => NotificationChannel::class,
         ];
     }
 
@@ -50,7 +50,12 @@ class Log extends Model
         return $this->message;
     }
 
-    public function queryLatest(int $limit = 5, Builder $query): Builder
+    public function isChannel(NotificationChannel $channel): bool
+    {
+        return $this->channel === $channel;
+    }
+
+    public function queryLatest(int $limit, Builder $query): Builder
     {
         return $this->limit(5)->orderBy('created_at', 'desc');
     }

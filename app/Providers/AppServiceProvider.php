@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Notification as NotificationModel;
 use App\Notifications\Channels\DatabaseLogChannel;
 use Google\Client;
 use Google\Service\Drive;
@@ -9,6 +10,7 @@ use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use League\Flysystem\Filesystem;
 use Masbug\Flysystem\GoogleDriveAdapter;
@@ -35,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         Notification::extend('database_log', function ($app) {
             return new DatabaseLogChannel;
         });
+
+        View::share('notifications', NotificationModel::whereNull('read_at')->get());
     }
 
     private function loadGoogleStorageDriver(string $driverName = 'google')

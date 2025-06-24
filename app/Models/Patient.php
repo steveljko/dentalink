@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
-* @method static \Illuminate\Database\Eloquent\Builder thisMonth()
-*/
+ * @method static \Illuminate\Database\Eloquent\Builder thisMonth()
+ */
 class Patient extends Model
 {
     /** @use HasFactory<\Database\Factories\PatientFactory> */

@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum LogLevel: string
+enum NotificationLevel: string
 {
     case DEBUG = 'debug';
     case INFO = 'info';

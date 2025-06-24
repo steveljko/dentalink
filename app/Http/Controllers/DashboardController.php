@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
-use App\Models\Log;
+use App\Models\Notification;
 use App\Models\Patient;
 use Illuminate\View\View;
 
@@ -14,7 +14,7 @@ final class DashboardController
         $patients = Patient::all();
         $createdThisMonth = Patient::thisMonth()->count();
         $appointments = Appointment::today()->whereStatus('scheduled')->get()->load('patient');
-        $logs = Log::latest()->get();
+        $logs = Notification::latest()->get();
 
         return view('dashboard', compact('patients', 'createdThisMonth', 'appointments', 'logs'));
     }
