@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -25,4 +26,11 @@ return Application::configure(basePath: dirname(__DIR__))
                 ? response()->json(['errors' => $exception->errors()], Response::HTTP_UNPROCESSABLE_ENTITY)
                 : back()->withErrors($exception->validator->errors());
         });
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule
+            ->command('send-appointment-reminders')
+            ->everyMinute()
+            ->withoutOverlapping()
+            ->runInBackground();
     })->create();

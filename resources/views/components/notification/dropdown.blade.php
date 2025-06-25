@@ -22,6 +22,13 @@
                     <x-notification.item icon="cloud-upload-alt" iconWrapperColor="red" :message="$notification->getMessage()"
                         :date="$notification->created_at" />
                 @endif
+
+                @if ($notification->isChannel(NotificationChannel::APPOINTMENT))
+                    <x-notification.item icon="calendar" iconWrapperColor="red" :message="$notification->getMessage()"
+                        :date="$notification->created_at">
+                        <a href="{{ route('patient.show', json_decode($notification->additional, true)['patient_id']) }}" class="font-semibold text-blue-500 uppercase hover:underline">Go to Patient</a>
+                    </x-notification.item>
+                @endif
             @endforeach
         @else
             <div class="text-center py-8">

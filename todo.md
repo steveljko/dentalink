@@ -15,5 +15,9 @@
     - [ ] create page for showing all notifications with filters
     - [x] remove notifications in quick actions
     - [x] add real time notification functionality
-    - [ ] trigger every appointment notification 15 minutes before time
+    - [x] trigger every appointment notification 15 minutes before time
     - [ ] send 8pm mail with schedule for tomorrow
+
+- [ ] add smooth swap animations for search and notifications in header
+
+- [ ] fix date and time picker getting wrong time 

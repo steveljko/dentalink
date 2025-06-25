@@ -24,6 +24,7 @@ class Notification extends Model
         'message',
         'translation_key',
         'additional',
+        'is_sent',
     ];
 
     /**
@@ -36,6 +37,7 @@ class Notification extends Model
         return [
             'level' => NotificationLevel::class,
             'channel' => NotificationChannel::class,
+            'additional' => 'array',
         ];
     }
 

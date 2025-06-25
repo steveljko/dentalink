@@ -12,5 +12,8 @@
             <i class="fas fa-clock"></i>
             <span>{{ $date->diffForHumans() }}</span>
         </div>
+        <div class="mt-2">
+            {{ $slot }}
+        </div>
     </div>
 </div>
