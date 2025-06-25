@@ -14,6 +14,6 @@
     - [x] add notification area in header for showing notifications
     - [ ] create page for showing all notifications with filters
     - [x] remove notifications in quick actions
-    - [ ] add real time notification functionality
+    - [x] add real time notification functionality
     - [ ] trigger every appointment notification 15 minutes before time
     - [ ] send 8pm mail with schedule for tomorrow

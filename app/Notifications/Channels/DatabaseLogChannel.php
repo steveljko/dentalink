@@ -4,6 +4,7 @@ namespace App\Notifications\Channels;
 
 use App\Enums\NotificationChannel;
 use App\Enums\NotificationLevel;
+use App\Events\NewNotification;
 use App\Models\Notification as NotificationModel;
 use Illuminate\Notifications\Notification;
 use Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification;
@@ -24,6 +25,9 @@ final class DatabaseLogChannel
             'channel' => NotificationChannel::BACKUP,
             'translation_key' => $data['translation_key'],
         ]);
+
+        $id = $notifiable->getKey();
+        event(new NewNotification($id));
     }
 
     protected function getData(Notification $notification): array
@@ -43,7 +47,7 @@ final class DatabaseLogChannel
             ],
             UnhealthyBackupWasFoundNotification::class => [
                 'level' => NotificationLevel::WARNING,
-                'translation_key' => 'backup.completed',
+                'translation_key' => 'backup.failed',
             ],
             CleanupWasSuccessfulNotification::class => [
                 'level' => NotificationLevel::INFO,

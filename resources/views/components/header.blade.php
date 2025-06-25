@@ -16,10 +16,19 @@
                 <ul id="suggestions" class="absolute top-full" />
             </div>
 
-            <div class="relative inline-block">
+            @fragment('notification-area')
+            <div
+                id="notifications"
+                class="relative inline-block"
+                hx-get="{{ route('notification.button') }}"
+                hx-trigger="reloadNotifications from:body"
+                hx-target="#notificationToggle"
+                hx-swap="outerHTML"
+            >
                 <x-notification.button />
-                <x-notification.dropdown />
+                <div id="dropdown"></div>
             </div>
+            @endfragment
 
             <x-dashboard.user-menu :name="auth()->user()->name" />
         </div>

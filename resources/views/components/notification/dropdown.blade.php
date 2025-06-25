@@ -1,5 +1,5 @@
 <div id="notificationDropdown"
-    class="absolute top-full right-0 mt-2 w-128 bg-white rounded-2xl shadow-2xl border border-slate-200 opacity-0 invisible -translate-y-2 transition-all duration-300 ease-out z-50 max-h-96 overflow-hidden">
+    class="absolute top-full right-0 mt-2 w-128 bg-white shadow">
     <div class="px-5 py-3 border-b border-gray-100 bg-gray-50">
         <h3 class="text-lg font-semibold text-slate-800 mb-1">Notifikacije</h3>
         @if ($notifications->count() >= 1)
@@ -9,13 +9,16 @@
     </div>
 
     <div class="max-h-80 overflow-y-auto">
+        @php
+            use App\Enums\NotificationChannel;
+        @endphp
         @if ($notifications->count())
             @foreach ($notifications as $notification)
-                @if ($notification->isChannel(\App\Enums\NotificationChannel::DEFAULT))
+                @if ($notification->isChannel(NotificationChannel::DEFAULT))
                     <x-notification.item icon="house" iconWrapperColor="green" :message="$notification->getMessage()" :date="$notification->created_at" />
                 @endif
 
-                @if ($notification->isChannel(\App\Enums\NotificationChannel::BACKUP))
+                @if ($notification->isChannel(NotificationChannel::BACKUP))
                     <x-notification.item icon="cloud-upload-alt" iconWrapperColor="red" :message="$notification->getMessage()"
                         :date="$notification->created_at" />
                 @endif

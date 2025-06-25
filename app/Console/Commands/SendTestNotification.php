@@ -4,7 +4,9 @@ namespace App\Console\Commands;
 
 use App\Enums\NotificationChannel;
 use App\Enums\NotificationLevel;
+use App\Events\NewNotification;
 use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class SendTestNotification extends Command
@@ -33,5 +35,8 @@ class SendTestNotification extends Command
             'channel' => NotificationChannel::DEFAULT,
             'message' => 'Test notification is fired',
         ]);
+
+        $user = User::first();
+        event(new NewNotification($user->id));
     }
 }

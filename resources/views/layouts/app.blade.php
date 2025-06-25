@@ -30,6 +30,10 @@
     </div>
 
     @yield('scripts')
+
+    <script>
+        window.userId = {{ auth()->id() ?? 'null' }};
+    </script>
 </body>
 
 </html>

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @method static \Illuminate\Database\Eloquent\Builder latest(int $limt = 5)
+ * @method static \Illuminate\Database\Eloquent\Builder unread()
  */
 class Notification extends Model
 {
@@ -58,5 +59,10 @@ class Notification extends Model
     public function queryLatest(int $limit, Builder $query): Builder
     {
         return $this->limit(5)->orderBy('created_at', 'desc');
+    }
+
+    public function scopeUnread(Builder $builder): Builder
+    {
+        return $this->whereNull('read_at')->orderBy('created_at', 'desc');
     }
 }

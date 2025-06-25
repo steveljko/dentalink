@@ -9,6 +9,7 @@ use App\Http\Controllers\PatientAttachmentController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientSearchController;
 use App\Http\Controllers\ShowAppointmentsController;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', LoginController::class)->name('login');
@@ -31,5 +32,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/search/patient', PatientSearchController::class)->name('search.patient');
 
+    Route::get('/notifications/badge', function () {
+        return view('components.notification.button');
+    })->name('notification.button');
+    Route::get('/notifications/get', function () {
+        Notification::where('read_at', null)->update(['read_at' => now()]);
+
+        return response(view('components.notification.dropdown'))
+            ->header('HX-Trigger', 'reloadNotifications');
+    })->name('notifications.get');
     Route::get('/notifications/read', MarkAllNotificationsAsReadController::class)->name('notifications.read');
 });

@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
             return new DatabaseLogChannel;
         });
 
-        View::share('notifications', NotificationModel::whereNull('read_at')->get());
+        View::share('notifications', NotificationModel::unread()->get());
     }
 
     private function loadGoogleStorageDriver(string $driverName = 'google')

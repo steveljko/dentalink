@@ -17,6 +17,8 @@
     "dependencies": {
         "@fancyapps/ui": "^5.0.36",
         "fullcalendar": "^6.1.17",
-        "htmx.org": "^1.9.12"
+        "htmx.org": "^1.9.12",
+        "laravel-echo": "^2.1.6",
+        "pusher-js": "^8.4.0"
     }
 }
