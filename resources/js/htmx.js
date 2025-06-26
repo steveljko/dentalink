@@ -14,6 +14,20 @@ htmx.on('htmx:beforeSwap', (e) => {
     }
 });
 
+// toggle functionality for notification dropdown when swapping notification dropdown
+htmx.on('htmx:beforeSwap', (e) => {
+    if (e.detail.target.id == 'notificationDropdown') {
+        const isActive = e.detail.target.classList.contains('top-full');
+
+        if (isActive) {
+            e.detail.target.className = 'absolute fade-me-in';
+            e.detail.target.innerHTML = '';
+
+            e.detail.shouldSwap = false;
+        }
+    }
+});
+
 // remove all validation messages before request starts
 document.addEventListener('htmx:beforeRequest', function (event) {
     const errors = document.querySelectorAll('[id$="-error"]');

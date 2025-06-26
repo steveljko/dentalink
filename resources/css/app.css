@@ -44,3 +44,15 @@
     z-index: 50;
     pointer-events: none;
 }
+
+.fade-me-in.htmx-added {
+    opacity: 0;
+    transform: translateY(0) translateZ(0);
+    backface-visibility: hidden;
+}
+
+.fade-me-in {
+    opacity: 1;
+    transform: translateY(1rem) translateZ(0);
+    transition: all 350ms ease-out;
+}

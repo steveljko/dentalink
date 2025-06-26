@@ -1,5 +1,5 @@
 <div id="notificationDropdown"
-    class="absolute top-full right-0 mt-2 w-128 bg-white shadow">
+    class="absolute top-full right-0 w-128 bg-white shadow fade-me-in">
     <div class="px-5 py-3 border-b border-gray-100 bg-gray-50">
         <h3 class="text-lg font-semibold text-slate-800 mb-1">Notifikacije</h3>
         @if ($notifications->count() >= 1)

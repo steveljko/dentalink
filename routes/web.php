@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
         Notification::where('read_at', null)->update(['read_at' => now()]);
 
         return response(view('components.notification.dropdown'))
-            ->header('HX-Trigger', 'reloadNotifications');
+            ->header('HX-Trigger-After-Settle', 'reloadNotifications');
     })->name('notifications.get');
     Route::get('/notifications/read', MarkAllNotificationsAsReadController::class)->name('notifications.read');
 });

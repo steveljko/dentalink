@@ -1,7 +1,7 @@
 <button
     hx-get="{{ route('notifications.get') }}"
     hx-swap="outerHTML"
-    hx-target="#dropdown"
+    hx-target="#notificationDropdown"
     id="notificationToggle"
     class="h-[40px] relative bg-white border border-gray-300 rounded-xl px-3 cursor-pointer hover:border-blue-500 group"
 >
