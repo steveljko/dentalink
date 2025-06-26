@@ -18,6 +18,6 @@
     - [x] trigger every appointment notification 15 minutes before time
     - [ ] send 8pm mail with schedule for tomorrow
 
-- [ ] add smooth swap animations for search and notifications in header
+- [x] add smooth swap animations for search and notifications in header
 
-- [ ] fix date and time picker getting wrong time 
+- [x] fix date and time picker getting wrong time 

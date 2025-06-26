@@ -8,7 +8,7 @@ const defaultCalendarOptions = {
     plugins: [ timeGridPlugin ],
     views: { timeGrid: { slotLabelFormat: { hour: '2-digit', minute: '2-digit', hour12: false } } },
     initialView: 'timeGrid',
-    timeZone: 'Europe/Belgrade',
+    timeZone: 'local',
     allDaySlot: false,
     nowIndicator: true,
     // show only time between 9am and 11pm
@@ -23,6 +23,7 @@ const defaultCalendarOptions = {
 function transformAppointmentsToEvents(appointments) {
     return appointments.map(appointment => {
         const startTime = new Date(appointment.scheduled_start);
+        console.log(startTime);
         const e = startTime.getTime() + (appointment.duration * 60 * 1000);
         const endTime = new Date(e);
 

@@ -132,9 +132,9 @@
                     minutes
                 } = this.elements;
 
-                date?.addEventListener('change', this.updateDateTime());
-                hour?.addEventListener('change', this.updateDateTime());
-                minutes?.addEventListener('change', this.updateDateTime());
+                date?.addEventListener('change', () => this.updateDateTime());
+                hour?.addEventListener('change', () => this.updateDateTime());
+                minutes?.addEventListener('change', () => this.updateDateTime());
             }
         }
 
