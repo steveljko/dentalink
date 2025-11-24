@@ -7,6 +7,7 @@ return [
     'search' => 'Pretraži',
     'clear' => 'Obriši',
     'create' => 'Novi Pacijent',
+    'health_card_number' => 'Broj kartona',
     'first_name' => 'Ime',
     'last_name' => 'Prezime',
     'name' => 'Ime',

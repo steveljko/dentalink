@@ -34,6 +34,18 @@ class Patient extends Model
         'notes',
     ];
 
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'date_of_birth' => 'date',
+        ];
+    }
+
     public function appointments(): HasMany
     {
         return $this->hasMany(Appointment::class);

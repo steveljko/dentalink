@@ -20,7 +20,7 @@ final class PatientController
             });
         }
 
-        $patients = $patients->select('id', 'first_name', 'last_name', 'date_of_birth')
+        $patients = $patients->select('id', 'health_card_number', 'first_name', 'last_name', 'date_of_birth')
             ->orderBy('created_at', 'desc')
             ->paginate(10);
 
