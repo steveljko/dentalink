@@ -2,14 +2,13 @@ import htmx from 'htmx.org';
 
 htmx.on('htmx:afterSwap', (e) => {
     if (e.detail.target.id == 'dialog') {
-        window.modal.show();
+        dialog.showModal();
     }
 });
 
 htmx.on('htmx:beforeSwap', (e) => {
     if (e.detail.target.id == 'dialog' && !e.detail.xhr.response) {
-        window.modal.hide();
-
+        dialog.close();
         e.detail.shouldSwap = false;
     }
 });

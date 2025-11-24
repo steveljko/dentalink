@@ -1,5 +1,5 @@
 import './htmx';
-import './modal';
+//import './modal';
 import './calendar';
 import './gallery';
 
