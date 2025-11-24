@@ -21,6 +21,7 @@ class Patient extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'health_card_number',
         'first_name',
         'last_name',
         'email',
