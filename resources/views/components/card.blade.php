@@ -38,7 +38,7 @@
     };
 @endphp
 
-<div class="bg-white rounded-lg shadow p-6 border-l-4 {{ $borderColor }}">
+<div class="bg-white rounded-lg shadow p-6 border-l-4 border-t-1 border-b-1 border-r-1 {{ $borderColor }}">
     <div class="flex items-center justify-between">
         <div>
             <p class="text-sm font-medium text-gray-600">{{ $title }}</p>

@@ -1,6 +1,6 @@
 <form hx-post="{{ route('patient.store') }}" class="modal-box">
-    <x-modal.header>{{ __('patients.create') }}</x-modal.header>
-    <x-modal.body>
+    <h5>{{ __('patients.create') }}</h5>
+    <div>
         @fragment('form')
         <div class="space-y-4">
             <x-input name="health_card_number" :label="__('patients.health_card_number')" :required="true" />
@@ -11,9 +11,9 @@
             <x-select name="gender" :label="__('patients.gender')" :options="['male' => 'Muško', 'female' => 'Žensko']" :required="true" />
         </div>
         @endfragment
-    </x-modal.body>
-    <x-modal.footer>
-        <x-button variant="secondary" data-hide-modal="true">Zatvori</x-button>
-        <x-button type="submit">{{ __('patients.save') }}</x-button>
-    </x-modal.footer>
+    </div>
+    <div class="flex justify-end gap-2 mt-4">
+        <button class="btn btn-outline">Zatvori</button>
+        <button class="btn btn-primary" type="submit">{{ __('patients.save') }}</button>
+    </div>
 </form>

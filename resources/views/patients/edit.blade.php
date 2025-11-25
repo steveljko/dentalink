@@ -1,6 +1,6 @@
-<form hx-put="{{ route('patient.update', $patient) }}" id="modal-content">
-    <x-modal.header>Izmeni Pacijenta</x-modal.header>
-    <x-modal.body class="h-[37.5rem] overflow-y-auto">
+<form hx-put="{{ route('patient.update', $patient) }}" class="modal-box w-11/12 max-w-5xl">
+    <h5>Izmeni Pacijenta</h5>
+    <div class="h-[50%] overflow-y-auto">
         @fragment('form')
             <div class="space-y-4">
                 <x-input name="first_name" :label="__('patients.first_name')" :required="true" :value="$patient->first_name" />
@@ -19,9 +19,9 @@
                 <x-textarea name="notes" label="Opis" :value="$patient->notes" />
             </div>
         @endfragment
-    </x-modal.body>
-    <x-modal.footer>
-        <x-button variant="secondary" data-hide-modal="true">Zatvori</x-button>
-        <x-button type="submit">{{ __('patients.save') }}</x-button>
-    </x-modal.footer>
+    </div>
+    <div class="flex justify-end gap-2">
+        <button class="btn btn-outline">Zatvori</button>
+        <button class="btn btn-primary" type="submit">{{ __('patients.save') }}</button>
+    </div>
 </form>

@@ -16,10 +16,6 @@
 </head>
 
 <body hx-headers='{"X-CSRF-TOKEN": "{{ csrf_token() }}"}' class="bg-gray-50">
-    <x-modal.container />
-    <x-modal.backdrop />
-
-
     <div class="flex items-center justify-center h-screen">
         <div class="w-1/2 lg:w-1/3 p-4 rounded-lg border border-gray-100 bg-white shadow">
             <div class="flex justify-center items-center my-3">
